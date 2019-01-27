@@ -1,6 +1,6 @@
 Customer Due Deligence - chain
-
-
+--------------------------------
+--------------------------------
 Project description : 
 Customer Due Deligence /Enhance Due Deligence checks are currently manual, repetitive and costly to all financial companies.
 To prevent Anti-Money laundering and other financial crimes, regulators are also getting more and more stingent on Know Your Customer checks for Due Deligence.
@@ -14,4 +14,5 @@ which these institutions runs in the risk of penalise heavily by regulation.
 Blockchain based due deligence address above mentioned challenges while keeping self-sovereignty of the customer data in the control of the customer itself. 
 
 
-Instructions to run
+Getting Started
+---------------------
