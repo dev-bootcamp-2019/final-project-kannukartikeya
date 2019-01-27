@@ -1,0 +1,70 @@
+kartikeya@kartikeya-Vostro-15-3568:~/Ethereum/Ethereum/Consensys/KYC_FinalProject$ truffle migrate --network rinkeby
+⚠️  Important ⚠️
+If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
+
+
+Migrations dry-run (simulation)
+===============================
+> Network name:    'rinkeby-fork'
+> Network id:      4
+> Block gas limit: 7004706
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'kyc'
+   ---------------
+   > account:             0x7fb2D8e393A000C51eFA52a9c735F01a4db31dee
+   > balance:             2.969271084
+   > gas used:            3934468
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.007868936 ETH
+
+   -------------------------------------
+   > Total cost:         0.007868936 ETH
+
+
+Summary
+=======
+> Total deployments:   1
+> Final cost:          0.007868936 ETH
+
+⚠️  Important ⚠️
+If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
+
+
+Starting migrations...
+======================
+> Network name:    'rinkeby'
+> Network id:      4
+> Block gas limit: 6999419
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'kyc'
+   ---------------
+   > transaction hash:    0x831888ae320704c16dbd5e56eb7ebcbabecf1ad2faa73153236d8b4cbc98bcb0
+   > Blocks: 1            Seconds: 21
+   > contract address:    0x70A57e7b896E7F4246a41Ac5d779993621377252
+   > account:             0x7fb2D8e393A000C51eFA52a9c735F01a4db31dee
+   > balance:             2.89845066
+   > gas used:            3934468
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.07868936 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.07868936 ETH
+
+
+Summary
+=======
+> Total deployments:   1
+> Final cost:          0.07868936 ETH
+
+

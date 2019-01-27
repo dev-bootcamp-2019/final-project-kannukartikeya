@@ -28,7 +28,7 @@ Blockchain based due deligence address above mentioned challenges while keeping 
 5. As a financial institution/Bank , system should allow access of due-deligence customer data performed by other financial institution/Bank.
 6. As a customer of financial institution/bank , system should allow customer to approve/reject due-deligence access request of other financial institution/Bank.
 7. As a financial institution/Bank , system should allow sharing of fraudlent behavior of customer with other financial institions.
--
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -57,7 +57,7 @@ Start Ganache
 ganache-cli
 ```
 
-Move to the project root and run truffle cmds:
+Move to the project root and run truffle compile/migrate:
 ```
 truffle compile
 truffle migrate
@@ -68,7 +68,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-Move to the project root and run truffle cmds:
+Move to the project root and run "truffle test" command:
 
 ```
 truffle test
@@ -106,6 +106,58 @@ Give an example
 
 ## Deployment
 
+For Truffle to derive the Ethereum address from your mnemonic, Truffle HD wallet provider needs to be installed. Run the below mentioned commands
+
+```
+npm install truffle-hdwallet-provider
+```
+### Development
+
+```
+truffle migrate --network development
+⚠️  Important ⚠️
+If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
+
+
+Starting migrations...
+======================
+> Network name:    'development'
+> Network id:      1548571685076
+> Block gas limit: 6721975
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'kyc'
+   ---------------
+   > transaction hash:    0xc7c95bbc785bd4900c961b0e1bbd04244ac7021bda9d0b9e6838a32a57cd2ddf
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x969d2E2e8B44557B67cCcDE01fc10dCdd7Aa53eC
+   > account:             0x80209212e19a8756484Ec01D1813B3D0A345bA8d
+   > balance:             99.92131064
+   > gas used:            3934468
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.07868936 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.07868936 ETH
+
+
+Summary
+=======
+> Total deployments:   1
+> Final cost:          0.07868936 ETH
+
+```
+### Rinkeby network
+
+
+* [deployed_addresses.txt](https://github.com/dev-bootcamp-2019/final-project-kannukartikeya/blob/master/README.MD) - rinkeby network deployment
+
+
 Add additional notes about how to deploy this on a live system
 
 ## Built With
@@ -113,10 +165,6 @@ Add additional notes about how to deploy this on a live system
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-
-
-
 
 
 ## Project Requirements
@@ -141,6 +189,11 @@ Add additional notes about how to deploy this on a live system
 - [x] Explain what measures you’ve taken to ensure that your contracts are not susceptible to common attacks
 - [x] Use a library or extend a contract
 - [x] Via EthPM or write your own
+### Deployment
+- [ ] Deploy your application onto one of the test networks.
+- [ ] Include a document called [deployed_addresses.txt](deployed_addresses.txt) that describes where your contracts live (which testnet and address).
+- [ ] Students can verify their source code using Etherscan https://etherscan.io/verifyContract for the appropriate testnet.
+- [ ] Evaluators can check by getting the provided contract ABI and calling a function on the deployed contract at https://www.myetherwallet.com/#contracts or checking the verification on Etherscan.
 ### Stretch Requirements
 - [x] Deploy contract on testnet
 - [x] Add functionality that allows store owners to create an auction
