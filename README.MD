@@ -174,12 +174,29 @@ UI uses Web Server for Chrome .
 3. Open http://127.0.0.1:8887/src in http://127.0.0.1:8887/src/index.html for Bank Portal
 
 
-## Project Requirements
+Metamask integration has been done only for registering for a bank from bank portal. 
+* [metamask_Signing.png](https://github.com/dev-bootcamp-2019/final-project-kannukartikeya/blob/master/metamask_Signing.png)
+
+However not in other places to keep evaluation simple.
+For enabling in each js file 
+```
+if (typeof web3 !== 'undefined') {
+         // First, we check if there's a web3 instance already active.
+         // Ethereum browsers like Mist or Chrome with the MetaMask extension
+         // will inject their own web3 instances.
+         // If an injected web3 instance is present,
+         // we get its provider and use it to create our web3 object.
+         web3Provider = web3.currentProvider;
+		//overriding this since metamask is already installed however we are using truffle provider
+	}
+```
+
+## Project Requirement
 ### User Interface Requirements
 - [x] Run the app on a dev server locally for testing/grading
 - [x] You should be able to visit a URL and interact with the application
 - [x] App recognizes current account
-- [] Sign transactions using MetaMask or uPort
+- [x] Sign transactions using MetaMask or uPort
 - [x] Contract state is updated
 - [x] Update reflected in UI
 ### Test Requirements
@@ -201,7 +218,7 @@ UI uses Web Server for Chrome .
 - [x] Include a document called [deployed_addresses.txt](deployed_addresses.txt) that describes where your contracts live (which testnet and address).
 - [x] Students can verify their source code using Etherscan https://etherscan.io/verifyContract for the appropriate testnet.
 - [ ] Evaluators can check by getting the provided contract ABI and calling a function on the deployed contract at https://www.myetherwallet.com/#contracts or checking the verification on Etherscan.
-### Stretch Requixements
+### Stretch Requirements
 - [x] Deploy contract on testnet
 - [x] Implement an upgradable design pattern 
 - [ ] Use Ethereum Name Service
