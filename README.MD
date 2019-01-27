@@ -155,10 +155,23 @@ Summary
 ### Rinkeby network
 
 
-* [deployed_addresses.txt](https://github.com/dev-bootcamp-2019/final-project-kannukartikeya/blob/master/README.MD) - rinkeby network deployment
+* [deployed_addresses.txt](https://github.com/dev-bootcamp-2019/final-project-kannukartikeya/blob/master/deployed_addresses.txt) - rinkeby network deployment
 
 
 Add additional notes about how to deploy this on a live system
+
+### UI Flow
+
+* [KYC-Blockchain_UI_Flow.pptx](https://github.com/dev-bootcamp-2019/final-project-kannukartikeya/blob/master/KYC-Blockchain_UI_Flow.pptx) 
+
+UI uses Web Server for Chrome .
+
+1. Please install Web server for Chrome add ons.
+
+2. Do the following setup
+* [ChromeWebServer_Setup.png](https://github.com/dev-bootcamp-2019/final-project-kannukartikeya/blob/master/ChromeWebServer_Setup.png)
+
+3. Open http://127.0.0.1:8887/src in http://127.0.0.1:8887/src/index.html for Bank Portal
 
 ## Built With
 

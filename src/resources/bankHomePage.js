@@ -54,6 +54,8 @@ function fillDetails() {
 	
 	
 	    alert("Current bank accout: " + currentEth);
+
+		document.getElementById("eth_account").innerHTML = currentEth ;
 	
 		kycContract.deployed().then(function(kycInstance) {
             return kycInstance.getBankName.call(currentEth,{from: currentEth,gas: 4700000});

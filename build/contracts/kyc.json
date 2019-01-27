@@ -40169,10 +40169,16 @@
       "links": {},
       "address": "0x969d2E2e8B44557B67cCcDE01fc10dCdd7Aa53eC",
       "transactionHash": "0xc7c95bbc785bd4900c961b0e1bbd04244ac7021bda9d0b9e6838a32a57cd2ddf"
+    },
+    "1548601955334": {
+      "events": {},
+      "links": {},
+      "address": "0x3B0D43dABF6276cf963948B42107794d78156bC0",
+      "transactionHash": "0xc7c95bbc785bd4900c961b0e1bbd04244ac7021bda9d0b9e6838a32a57cd2ddf"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-01-27T12:06:02.529Z",
+  "updatedAt": "2019-01-27T15:12:42.976Z",
   "devdoc": {
     "methods": {}
   },
