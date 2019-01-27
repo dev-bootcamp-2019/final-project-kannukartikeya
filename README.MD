@@ -173,19 +173,13 @@ UI uses Web Server for Chrome .
 
 3. Open http://127.0.0.1:8887/src in http://127.0.0.1:8887/src/index.html for Bank Portal
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
 
 ## Project Requirements
 ### User Interface Requirements
 - [x] Run the app on a dev server locally for testing/grading
 - [x] You should be able to visit a URL and interact with the application
 - [x] App recognizes current account
-- [x] Sign transactions using MetaMask or uPort
+- [] Sign transactions using MetaMask or uPort
 - [x] Contract state is updated
 - [x] Update reflected in UI
 ### Test Requirements
@@ -203,16 +197,14 @@ UI uses Web Server for Chrome .
 - [x] Use a library or extend a contract
 - [x] Via EthPM or write your own
 ### Deployment
-- [ ] Deploy your application onto one of the test networks.
-- [ ] Include a document called [deployed_addresses.txt](deployed_addresses.txt) that describes where your contracts live (which testnet and address).
-- [ ] Students can verify their source code using Etherscan https://etherscan.io/verifyContract for the appropriate testnet.
+- [x] Deploy your application onto one of the test networks.
+- [x] Include a document called [deployed_addresses.txt](deployed_addresses.txt) that describes where your contracts live (which testnet and address).
+- [x] Students can verify their source code using Etherscan https://etherscan.io/verifyContract for the appropriate testnet.
 - [ ] Evaluators can check by getting the provided contract ABI and calling a function on the deployed contract at https://www.myetherwallet.com/#contracts or checking the verification on Etherscan.
-### Stretch Requirements
+### Stretch Requixements
 - [x] Deploy contract on testnet
-- [x] Add functionality that allows store owners to create an auction
-- [x] Implement functionality of ERC20 
-- [x] Implement an upgradable design pattern (Asset Registration is Upgradable and following Eternal Storage standard)
-- [] Use Ethereum Name Service
+- [x] Implement an upgradable design pattern 
+- [ ] Use Ethereum Name Service
 - [ ] Write a smart contract in LLL or Vyper
 - [ ] Use uPort
 - [ ] Use IPFS
