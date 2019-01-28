@@ -182,8 +182,10 @@ contract kyc is owned {
 		return true;
 	}
 
-    //  function to check access rights of transaction request sender
 
+    /** @dev function to check access rights of transaction request sender
+      * @return true  if successfull, false otherwise 
+	*/
     function isPartOfOrg() public view returns(bool) {
         for(uint i = 0; i < allOrgs.length; ++ i) {
             if(allOrgs[i].ethAddress == msg.sender)
@@ -192,11 +194,12 @@ contract kyc is owned {
         return false;
     }
 
-    //  function that adds an organisation to the network
-    //  returns 0 if successfull
-    //  returns 7 if no access rights to transaction request sender
-    //  no check on access rights if network strength in zero
-
+    /** @dev function that adds an organisation to the network.no check on access rights if network strength in zero
+      * @param uname Name of the customer
+      * @param eth Ethereum account of financial institution/bank as password
+      * @param regNum Registration authority/number
+      * @return uint 0 if successfull,if no access rights to transaction request sender
+      */
     function addBank(string uname, address eth, string regNum) public payable returns(uint) {
 	emit addBankEvent ( uname);
         if(allOrgs.length == 0 || isPartOfOrg()) {
@@ -208,11 +211,10 @@ contract kyc is owned {
         return 7;
     }
 
-    //  function that removes an organisation from the network
-    //  returns 0 if successful
-    //  returns 7 if no access rights to transaction request sender
-    //  returns 1 if organisation to be removed not part of network
-
+    /** @dev function that removes an organisation from the network
+      * @param eth Ethereum account of financial institution/bank
+      * @return uint 0 if successfull,7 if no access rights to transaction request sender,1 if organisation to be removed not part of network
+      */
     function removeBank(address eth) public payable returns(uint) {
         if(!isPartOfOrg())
             return 7;
@@ -228,11 +230,11 @@ contract kyc is owned {
         return 1;
     }
 
-    //  function to add a customer profile to the database
-    //  returns 0 if successful
-    //  returns 7 if no access rights to transaction request sender
-    //  returns 1 if size limit of the database is reached
-    //  returns 2 if customer already in network
+    /** @dev function that adds a customer profile to network
+      * @param Uname Name of the customer
+      * @param DataHash KYC details of cutomer is form of demiliter based string
+      * @return uint 0 if successfull, 7 if no access rights to transaction request sender,1 if size limit of the database is reached,2 if customer already in network
+      */
 
     function addCustomer(string Uname, string DataHash) public payable returns(uint) {
         if(!isPartOfOrg())
@@ -251,10 +253,10 @@ contract kyc is owned {
         return 0;
     }
 
-    //  function to remove fraudulent customer profile from the database
-    //  returns 0 if successful
-    //  returns 7 if no access rights to transaction request sender
-    //  returns 1 if customer profile not in database
+    /** @dev function to remove fraudulent customer profile from the database
+      * @param Uname Name of the customer
+      * @return uint 0 if successfull, 7 if no access rights to transaction request sender,1 if size limit of the database is reached,1 if customer profile not in database
+      */
 
     function removeCustomer(string Uname) public payable returns(uint) {
         if(!isPartOfOrg())
@@ -275,10 +277,11 @@ contract kyc is owned {
         return 1;
     }
 
-    //  function to modify a customer profile in database
-    //  returns 0 if successful
-    //  returns 7 if no access rights to transaction request sender
-    //  returns 1 if customer profile not in database
+    /** @dev function to function to modify a customer profile in database
+      * @param Uname Name of the customer
+      * @param DataHash modified KYC details of cutomer is form of demiliter based string
+      * @return uint 0 if successfull, 7 if no access rights to transaction request sender,1 if size limit of the database is reached,1 if customer profile not in database
+      */
 
     function modifyCustomer(string Uname,string DataHash) public payable returns(uint) {
         if(!isPartOfOrg())
@@ -294,7 +297,10 @@ contract kyc is owned {
         return 1;
     }
 
-    // function to return customer profile data
+    /** @dev function to return customer profile data
+      * @param Uname Name of the customer
+      * @return string delimited KYC details of customer if successfull, Access Denied - if no access rights to transaction request sender, customer profile not in database
+      */
 
     function viewCustomer(string Uname) public payable returns(string) {
         if(!isPartOfOrg())
@@ -307,8 +313,11 @@ contract kyc is owned {
         return "Customer not found in database!";
     }
 
-    //  function to modify customer rating
-
+    /** @dev function to modify customer rating
+      * @param Uname Name of the customer
+      * @param ifIncrease true if rating needs to be increased or decrease otherwise 
+      * @return 0 if successful ,  1 if bank is not found
+      */
     function updateRatingCustomer(string Uname, bool ifIncrease) public payable returns(uint) {
         for(uint i = 0; i < allCustomers.length; ++ i) {
             if(stringsEqual(allCustomers[i].uname, Uname)) {
@@ -334,9 +343,11 @@ contract kyc is owned {
         return 1;
     }
 
-    //  function to update organisation rating
-    //  bool true indicates a succesfull addition of KYC profile
-    //  false indicates detection of a fraudulent profile
+    /** @dev function to update organisation rating
+      * @param bankAddress Ethereum account of financial institution/bank
+      * @param ifAdded true  indicates a succesfull addition of KYC profile
+      * @return 0 if successful ,  1 if bank is not found
+      */
 
     function updateRating(address bankAddress,bool ifAdded) public payable returns(uint) {
         for(uint i = 0; i < allOrgs.length; ++ i) {
@@ -363,9 +374,11 @@ contract kyc is owned {
         return 1;
     }
 
-    //  function to validate bank log in
-    //  returns null if username or password not correct
-    //  returns bank name if correct
+    /** @dev function to to validate bank log in
+      * @param Uname Name of the Bank
+      * @param password Ethereum account of financial institution/bank
+      * @return string "0" if successful ,  null if fails
+      */
     function checkBank(string Uname, address password) public view returns(string) {
         for(uint i = 0; i < allOrgs.length; ++ i) {
             if(allOrgs[i].ethAddress == password && stringsEqual(allOrgs[i].name, Uname)) {
@@ -375,6 +388,11 @@ contract kyc is owned {
         return "null";
     }
 
+    /** @dev function to validate customer log in
+      * @param Uname Name of the Customer
+      * @param password Password for the customer
+      * @return book true if successful ,  false if fails
+      */
     function checkCustomer(string Uname, string password) public view  returns(bool) {
         for(uint i = 0; i < allCustomers.length; ++ i) {
             if(stringsEqual(allCustomers[i].uname, Uname) && stringsEqual(allCustomers[i].password, password)) {
@@ -387,6 +405,11 @@ contract kyc is owned {
         return false;
     }
 
+    /** @dev function to set password for the customer
+      * @param Uname Name of the Customer
+      * @param password Password for the customer
+      * @return book true if successful ,  false if fails
+      */
     function setPassword(string Uname, string password) public payable returns(bool) {
         for(uint i=0;i < allCustomers.length; ++ i) {
             if(stringsEqual(allCustomers[i].uname, Uname) && stringsEqual(allCustomers[i].password, "null")) {
@@ -397,7 +420,10 @@ contract kyc is owned {
         return false;
     }
 
-    // All getter functions
+    /** @dev function to get bank name
+      * @param ethAcc Ethereum account for the bank
+      * @return string name if successful ,  null if fails
+      */
 
     function getBankName(address ethAcc) public payable returns(string) {
         for(uint i = 0; i < allOrgs.length; ++ i) {
@@ -408,6 +434,10 @@ contract kyc is owned {
         return "null";
     }
 
+    /** @dev function to get bank account
+      * @param uname Name of the bank
+      * @return address account if successful ,  0x14e041521a40e32ed88b22c0f32469f5406d757a if fails
+      */
     function getBankEth(string uname) public payable returns(address) {
         for(uint i = 0; i < allOrgs.length; ++ i) {
             if(stringsEqual(allOrgs[i].name, uname)) {
@@ -417,6 +447,10 @@ contract kyc is owned {
         return 0x14e041521a40e32ed88b22c0f32469f5406d757a;
     }
 
+    /** @dev function to get bank name of customer 
+      * @param Uname Name of the customer
+      * @return string name if successful
+      */
     function getCustomerBankName(string Uname) public payable returns(string) {
         for(uint i = 0;i < allCustomers.length; ++ i) {
             if(stringsEqual(allCustomers[i].uname, Uname)) {
@@ -425,6 +459,10 @@ contract kyc is owned {
         }
     }
 
+    /** @dev function to get bank reg number of bank 
+      * @param ethAcc Ethereum account of the bank 
+      * @return string regNumber if successful, null if fails
+      */
     function getBankReg(address ethAcc) public payable returns(string) {
         for(uint i = 0; i < allOrgs.length; ++ i) {
             if(allOrgs[i].ethAddress == ethAcc) {
@@ -434,6 +472,10 @@ contract kyc is owned {
         return "null";
     }
 
+    /** @dev function to get bank KYC count 
+      * @param ethAcc Ethereum account of the bank 
+      * @return uint count of KYC if successful, 0 otherwise
+      */
     function getBankKYC(address ethAcc) public payable returns(uint) {
         for(uint i = 0; i < allOrgs.length; ++ i) {
             if(allOrgs[i].ethAddress == ethAcc) {
@@ -443,6 +485,10 @@ contract kyc is owned {
         return 0;
     }
 
+    /** @dev function to get bank rating
+      * @param ethAcc Ethereum account of the bank 
+      * @return uint rating of bank 
+      */
     function getBankRating(address ethAcc) public payable returns(uint) {
         for(uint i = 0; i < allOrgs.length; ++ i) {
             if(allOrgs[i].ethAddress == ethAcc) {
@@ -453,6 +499,10 @@ contract kyc is owned {
         return 0;
     }
 
+    /** @dev function to get bank rating
+      * @param Uname Name of the customer 
+      * @return uint rating of bank 
+      */
     function getCustomerBankRating(string Uname) public payable returns(uint) {
         for(uint i = 0;i < allCustomers.length; ++ i) {
             if(stringsEqual(allCustomers[i].uname, Uname)) {
@@ -461,6 +511,10 @@ contract kyc is owned {
         }
     }
 
+    /** @dev function to get customer rating
+      * @param Uname Name of the customer 
+      * @return uint rating of customer,0 otherwise 
+      */
     function getCustomerRating(string Uname) public payable returns(uint) {
         for(uint i = 0; i < allCustomers.length; ++ i) {
             if(stringsEqual(allCustomers[i].uname, Uname)) {
@@ -470,4 +524,9 @@ contract kyc is owned {
         return 0;
     }
 
+    /** @dev function to kill contract
+      */
+	function kill(){
+	if(msg.sender ==owner)  selfdestruct(owner);
+	}
 }
