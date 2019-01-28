@@ -39,7 +39,7 @@ npm version is >= 5.6.0
 
 Truffle v5.0.1 (core: 5.0.1)
 
-Solidity v0.5.0 (solc-js)
+Solidity 0.4.25 
 
 Ganache CLI v6.1.0 (ganache-core: 2.1.0)
 
@@ -83,25 +83,12 @@ Using network 'development'.
     ✓ should add bank4 with provided name,password,registration number,add a kyc of a new customer (181ms)
     ✓ bank5 should add a kyc of a new customer and then remove it due to fraudlent transactions (236ms)
 
-
   5 passing (934ms)
 
 ```
+## extending contract
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
+``` kyc contract extends onwer contract and allow only the owner of the contract to destroy it
 ```
 
 ## Deployment
@@ -205,13 +192,13 @@ if (typeof web3 !== 'undefined') {
 - [x] Explain why you wrote those tests
 - [x] Tests run with truffle test
 ### Design Pattern Requirements
-- [x] Implement a circuit breaker (emergency stop) pattern
+- [ ] Implement a circuit breaker (emergency stop) pattern
 - [x] What other design patterns have you used / not used?
 - [x] Why did you choose the patterns that you did?
 - [x] Why not others?
 ### Security Tools / Common Attacks
 - [x] Explain what measures you’ve taken to ensure that your contracts are not susceptible to common attacks
-- [x] Use a library or extend a contract
+- [x] Use a library or extend a contract 
 - [x] Via EthPM or write your own
 ### Deployment
 - [x] Deploy your application onto one of the test networks.

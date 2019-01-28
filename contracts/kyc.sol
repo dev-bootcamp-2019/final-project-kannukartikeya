@@ -1,6 +1,13 @@
 pragma solidity ^0.4.4;
 
-contract kyc {
+
+contract owned {
+	function owned() { owner = msg.sender ;}  
+	address owner;
+}
+
+/** @title kyc onboarding contract */
+contract kyc is owned {
 
     //  Struct customer
     //  uname - username of the customer
@@ -52,6 +59,11 @@ contract kyc {
     event addBankEvent ( string uname);
     
 
+    /** @dev check if financial institution/bank is authorised by client to view kyc details.
+      * @param Uname Name of the customer.
+      * @param bankAddress Ethereum account for the bank.
+      * @return bool True if allowed and false if not allowed
+      */
     function ifAllowed(string Uname, address bankAddress) public payable returns(bool) {
         for(uint i = 0; i < allRequests.length; ++i) {
             if(stringsEqual(allRequests[i].uname, Uname) && allRequests[i].bankAddress == bankAddress && allRequests[i].isAllowed) {
@@ -62,6 +74,11 @@ contract kyc {
     }
 
 
+    /** @dev Get list of all access requests from financial institution/banks interested in KYC details of the customer.
+      * @param Uname Name of the customer.
+      * @param ind iterator sent from ui.
+      * @return address Ethereum account of financial institution/bank for approval/rejection and 0x14e041521a40e32ed88b22c0f32469f5406d757a if not requests are pending.
+      */
   function getBankRequests1(string Uname, uint ind) public payable returns(address) {
         uint j = 0;
         for(uint i=0;i<allRequests.length;++i) {
@@ -73,6 +90,7 @@ contract kyc {
         return 0x14e041521a40e32ed88b22c0f32469f5406d757a;
     }
 
+    /** @dev Not used however kept for reference **/ 
     function getBankRequests(string Uname, uint ind) public payable returns(address) {
         uint j = 0;
         for(uint i=0;i<allRequests.length;++i) {
@@ -89,6 +107,7 @@ contract kyc {
         return 0x14e041521a40e32ed88b22c0f32469f5406d757a;
     }
 
+    /** @dev Not used however kept for reference **/ 
     function getBankRequestsDetails(string Uname, uint ind) public payable returns(address,bool) {
         uint j = 0;
         for(uint i=0;i<allRequests.length;++i) {
@@ -99,11 +118,23 @@ contract kyc {
         }
         return (0x14e041521a40e32ed88b22c0f32469f5406d757a,true);
     }
+
+
+    /** @dev Get the count of KYC access request to be approved by the customer.
+      * @param Uname Name of the customer.
+      * @param ind Currently not used.
+      * @return uint Count of access request pending approval/rejection from client.
+      */
     function getBankRequestsCount(string Uname, uint ind) public payable returns(uint) {
         return allRequests.length;
     }
 
 
+    /** @dev Add access request from financial institution/banks interested in KYC details of the customer.
+      * @param Uname Name of the customer.
+      * @param bankAddress Ethereum account of financial institution/bank which has tried to access KYC details of customer.
+      * @return bool True is request is added successfully & false if request already exists.
+      */
     function addRequest(string Uname, address bankAddress) public payable returns(bool){
         for(uint i = 0; i < allRequests.length; ++ i) {
             if(stringsEqual(allRequests[i].uname, Uname) && allRequests[i].bankAddress == bankAddress) {
@@ -115,6 +146,11 @@ contract kyc {
 	return true;
     }
 
+    /** @dev Approve/Reject KYC access request for financial institution/bank by customer
+      * @param Uname Name of the customer.
+      * @param bankAddress Ethereum account of financial institution/bank which has tried to access KYC details of customer.
+      * @param bankAddress True if customer approves kyc acess request & false otherwise.
+      */
     function allowBank(string Uname, address bankAddress, bool ifallowed) public payable {
         for(uint i = 0; i < allRequests.length; ++ i) {
             if(stringsEqual(allRequests[i].uname, Uname) && allRequests[i].bankAddress == bankAddress) {
@@ -132,7 +168,6 @@ contract kyc {
     }
 
     //   internal function to compare strings
-    
     function stringsEqual(string storage _a, string memory _b) internal returns (bool) {
 		bytes storage a = bytes(_a);
 		bytes memory b = bytes(_b);
