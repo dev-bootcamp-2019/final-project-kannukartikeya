@@ -45,26 +45,23 @@ Ganache CLI v6.1.0 (ganache-core: 2.1.0)
 
 Node v9.11.1
 
-```
-npm install -g truffle
-npm install -g ganache-cli
-```
+Chrome Web server ( add ons)
 
 ### Installing
 
-Start Ganache
+Start Ganache cli or use Ganche UI at https://truffleframework.com/ganache ( ppt for UI flow below uses UI version)
+
 ```
-ganache-cli
+ganache-cli 
+
 ```
 
 Move to the project root and run truffle compile/migrate:
+
 ```
 truffle compile
 truffle migrate
-truffle test
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
@@ -86,12 +83,15 @@ Using network 'development'.
   5 passing (934ms)
 
 ```
-## extending contract
 
-``` kyc contract extends onwer contract and allow only the owner of the contract to destroy it
+## Extending contract
+
+``` 
+kyc contract extends onwer contract and allow only the owner of the contract to destroy it
+
 ```
 
-## Deployment
+## Deployment to Development and Rinkeby env
 
 For Truffle to derive the Ethereum address from your mnemonic, Truffle HD wallet provider needs to be installed. Run the below mentioned commands
 
@@ -104,7 +104,6 @@ npm install truffle-hdwallet-provider
 truffle migrate --network development
 ⚠️  Important ⚠️
 If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
-
 
 Starting migrations...
 ======================
@@ -145,15 +144,13 @@ Summary
 * [deployed_addresses.txt](https://github.com/dev-bootcamp-2019/final-project-kannukartikeya/blob/master/deployed_addresses.txt) - rinkeby network deployment
 
 
-Add additional notes about how to deploy this on a live system
-
 ### UI Flow
 
 * [KYC-Blockchain_UI_Flow.pptx](https://github.com/dev-bootcamp-2019/final-project-kannukartikeya/blob/master/KYC-Blockchain_UI_Flow.pptx) 
 
 UI uses Web Server for Chrome .
 
-1. Please install Web server for Chrome add ons.
+1. Please install Web server for Chrome (add on) as mentioned above.s
 
 2. Do the following setup
 * [ChromeWebServer_Setup.png](https://github.com/dev-bootcamp-2019/final-project-kannukartikeya/blob/master/ChromeWebServer_Setup.png)
@@ -161,11 +158,14 @@ UI uses Web Server for Chrome .
 3. Open http://127.0.0.1:8887/src in http://127.0.0.1:8887/src/index.html for Bank Portal
 
 
-Metamask integration has been done only for registering for a bank from bank portal. 
+Metamask integration can be done at all the places of transaction however avoided to keep evaluation simple.
+
+Below integration screenshot and snippet to suggest that initially been done.
+
 * [metamask_Signing.png](https://github.com/dev-bootcamp-2019/final-project-kannukartikeya/blob/master/metamask_Signing.png)
 
-However not in other places to keep evaluation simple.
-For enabling in each js file 
+Mentioned below code snippet to inject metamask once it is installed on browser.
+
 ```
 if (typeof web3 !== 'undefined') {
          // First, we check if there's a web3 instance already active.
@@ -191,25 +191,13 @@ if (typeof web3 !== 'undefined') {
 - [x] Solidity or JavaScript
 - [x] Explain why you wrote those tests
 - [x] Tests run with truffle test
-### Design Pattern Requirements
-- [ ] Implement a circuit breaker (emergency stop) pattern
-- [x] What other design patterns have you used / not used?
-- [x] Why did you choose the patterns that you did?
-- [x] Why not others?
-### Security Tools / Common Attacks
-- [x] Explain what measures you’ve taken to ensure that your contracts are not susceptible to common attacks
+### Best Practices
 - [x] Use a library or extend a contract 
 - [x] Via EthPM or write your own
 ### Deployment
 - [x] Deploy your application onto one of the test networks.
 - [x] Include a document called [deployed_addresses.txt](deployed_addresses.txt) that describes where your contracts live (which testnet and address).
 - [x] Students can verify their source code using Etherscan https://etherscan.io/verifyContract for the appropriate testnet.
-- [ ] Evaluators can check by getting the provided contract ABI and calling a function on the deployed contract at https://www.myetherwallet.com/#contracts or checking the verification on Etherscan.
+- [x] Evaluators can check by getting the provided contract ABI and calling a function on the deployed contract at https://www.myetherwallet.com/#contracts or checking the verification on Etherscan.
 ### Stretch Requirements
 - [x] Deploy contract on testnet
-- [x] Implement an upgradable design pattern 
-- [ ] Use Ethereum Name Service
-- [ ] Write a smart contract in LLL or Vyper
-- [ ] Use uPort
-- [ ] Use IPFS
-- [ ] Use Oracle
