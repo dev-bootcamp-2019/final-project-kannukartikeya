@@ -155,8 +155,10 @@ UI uses Web Server for Chrome .
 2. Do the following setup
 * [ChromeWebServer_Setup.png](https://github.com/dev-bootcamp-2019/final-project-kannukartikeya/blob/master/ChromeWebServer_Setup.png)
 
-3. Open http://127.0.0.1:8887/src in http://127.0.0.1:8887/src/index.html for Bank Portal
-
+3. Open http://127.0.0.1:8887/src/index.html for Bank Portal
+   Open http://127.0.0.1:8887/src/indexCustomer.htmlfor Customer Portal
+   
+   (once root folder /final-project-kannukartikeya has successfully set in chrome web server)
 
 Metamask integration can be done at all the places of transaction however avoided to keep evaluation simple.
 
