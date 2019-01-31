@@ -34,7 +34,7 @@
     <ul class="nav nav-tabs navbar-inverse">
         <li><a href="./indexCustomer.html">Back</a></li>
         <li class="active"><a href="#form1" data-toggle="tab">KYC Details </a></li>
-        <li><a href="#form2" data-toggle="tab">View Requests</a></li>
+        <li><a href="#form2" data-toggle="tab" onclick="what()">View Requests</a></li>
 
 
     </ul>
@@ -256,10 +256,7 @@
 
 
         <div id="form2" class="tab-pane fade in">
-            <form class="well form-horizontal" id="contact_form">
-                <fieldset>
-
-                    <!-- Form Name -->
+			 <!-- Form Name -->
                     <legend align="center">View Requests</legend>
 					<script type="text/javascript" src="./dist/web3.min.js"></script>
                     <script type="text/javascript">
@@ -276,10 +273,8 @@
                     <script language="JavaScript" type="text/javascript">
                        //what();
                     </script>
-
-
-
-
+            <form class="well form-horizontal" id="view_request_form">
+                <fieldset>
                 </fieldset>
             </form>
         </div>

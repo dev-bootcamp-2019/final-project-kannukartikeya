@@ -19,9 +19,9 @@ function initWeb3(){
          // will inject their own web3 instances.
          // If an injected web3 instance is present,
          // we get its provider and use it to create our web3 object.
-         //web3Provider = web3.currentProvider;
+         web3Provider = web3.currentProvider;
 		//overriding this since metamask is already installed however we are using truffle provider
-		 web3Provider = new web3.providers.HttpProvider('http://localhost:8545');
+		 //web3Provider = new web3.providers.HttpProvider('http://localhost:8545');
      } else {
          // If no injected web3 instance is present,
          // we create our web3 object based on the TestRPC's provider.

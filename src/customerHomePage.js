@@ -43,8 +43,8 @@ function initContract() {
 })
 	.then(function(result){
 		fillForm();
-		alert ('Requests');
-		what();
+		//alert ('Requests');
+		//what();
 	})
 }
 
@@ -58,7 +58,7 @@ var user_name = localStorage.username_c;
 
 function fillForm() {
 	
-       alert(user_name);
+      // alert(user_name);
 	
 	   kycContract.deployed().then(function(kycInstance) {
           return kycInstance.viewCustomer.call(user_name,{from: current_account,gas: 4700000});
@@ -165,7 +165,9 @@ function what() {
             return kycInstance.getBankRequestsCount.call(user_name, 1);
         })
         .then(function(count) {
-			alert(count);
+			//alert(count);
+			var container = $('#view_request_form fieldset');
+			container.empty();
 			for(i=0;i<count;i++){
 			 kycContract.deployed().then(function(kycInstance) {
 			 var instancee = kycInstance;
@@ -173,13 +175,14 @@ function what() {
 			 return instancee.getBankRequests1.call(user_name, req);
 				 //cnt++;
 			 }).then(function(add){
-				  		alert (add);
+				  		//alert (add);
 				 if (add != "0x14e041521a40e32ed88b22c0f32469f5406d757b" && add != "0x14e041521a40e32ed88b22c0f32469f5406d757a") {
 					  kycContract.deployed().then(function(kycInstance) {
 
            				 return kycInstance.getBankName.call(add);
        				 }).then(function(name){
-					 document.write("<div class=\"form-group\"><label class=\"col-md-4 control-label\" id = \"bank_name_l\">" + name + "</label><div class=\"col-md-4 inputGroupContainer\"><div class=\"input-group\"><button type=\"submit\" class=\"btn btn-success\" id = \"addKYCSend\" onclick = \"return allow(" + cnt.toString() + ")\">Allow </button>                                          <button type=\"submit\" class=\"btn btn-danger\" id = \"addKYCSend1\" onclick = \"return deny(" + cnt + ")\">Deny </button>                         </div></div></div><br>");
+						  
+					 container.append("<div class=\"form-group\"><label class=\"col-md-4 control-label\" id = \"bank_name_l\">" + name + "</label><div class=\"col-md-4 inputGroupContainer\"><div class=\"input-group\"><button type=\"submit\" class=\"btn btn-success\" id = \"addKYCSend\" onclick = \"return allow(" + cnt.toString() + ")\">Allow </button>                                          <button type=\"submit\" class=\"btn btn-danger\" id = \"addKYCSend1\" onclick = \"return deny(" + cnt + ")\">Deny </button>                         </div></div></div><br>");
 					 arr.push(add);
 						  cnt++;
 					  })
