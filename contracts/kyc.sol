@@ -1,5 +1,12 @@
 pragma solidity ^0.4.4;
 
+/** @title Customer Due Deligence - chain
+  * @author Kartikeya Gupta
+*/
+
+import "./SafeMath.sol";
+
+
 
 contract owned {
 	function owned() { owner = msg.sender ;}  
@@ -203,7 +210,8 @@ contract kyc is owned {
     function addBank(string uname, address eth, string regNum) public payable returns(uint) {
 	emit addBankEvent ( uname);
         if(allOrgs.length == 0 || isPartOfOrg()) {
-            allOrgs.length ++;
+	    allOrgs.length = SafeMath.add(allOrgs.length,1);
+            //allOrgs.length ++;
             allOrgs[allOrgs.length - 1] = Organisation(uname, eth, 200, 0, regNum);
             return 0;
         }
@@ -223,7 +231,8 @@ contract kyc is owned {
                 for(uint j = i+1;j < allOrgs.length; ++ j) {
                     allOrgs[i-1] = allOrgs[i];
                 }
-                allOrgs.length --;
+		allOrgs.length = SafeMath.sub(allOrgs.length,1);
+                //allOrgs.length --;
                 return 0;
             }
         }
